@@ -3,6 +3,7 @@
 
 name: Node.js CI
 
+#Permet de décider quand la CI est éxécutée, ici à chaque push et pull request
 on:
   push:
     branches: [ "main" ]
@@ -11,13 +12,14 @@ on:
 
 jobs:
   build:
-
+#indique le système utilisé. Mis automatiquement par le constructeur de workflow
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-        
+
+#Etapes à suivre        
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
